@@ -5,7 +5,7 @@ char = PlayerInfo.new("test")
 char.gold = 100
 char.print
 
-repeating_task = RepeatingTask.new(lambda {puts('test mehtod invoke\n')}, 5000)
+repeating_task = RepeatingTask.new(lambda {puts('Test method invoke.\n')}, 5000) # The fuck is this
 
 input = ''
 begin
