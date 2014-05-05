@@ -5,7 +5,7 @@ require './Inventory/material'
 require './Inventory/item_store'
 
 
-item_store = ItemStore.new(Dir.pwd)
+item_store = ItemStore.new(File.join(Dir.pwd, "data", "items"))
 item_store.item_store.each{
   |key, value| puts(value.to_string)
 }

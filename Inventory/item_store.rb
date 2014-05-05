@@ -11,7 +11,7 @@ class ItemStore
 
   def read_files(root_path)
     Dir.entries(root_path).each{ |filename|
-      if(File.file?(filename) and File.extname(filename) == '.json')
+      if(File.exists?(File.join(root_path, filename)) and File.extname(filename) == '.json')
         contents = ''
         File.open(File.join(root_path, filename), "r") do |f|
           f.each_line do |line|
