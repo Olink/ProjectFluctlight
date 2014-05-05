@@ -1,12 +1,18 @@
 class Recipe
+  @id
   @materials
   @result
   @difficulty
 
-  def initialize(mats, res, dif)
+  def initialize(id, mats, res, dif)
+    @id = id
     @materials = mats
     @result = res
     @difficulty = dif
+  end
+
+  def id
+    return @id
   end
 
   def materials
@@ -43,5 +49,9 @@ class Recipe
     }
 
     return true
+  end
+
+  def to_string
+    return "Recipe id: #{@id} creates #{@result.to_string}"
   end
 end

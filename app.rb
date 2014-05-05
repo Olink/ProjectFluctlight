@@ -3,11 +3,18 @@ require './Inventory/item'
 require './Inventory/recipe'
 require './Inventory/material'
 require './Inventory/item_store'
+require './Inventory/recipe_store'
 
 
 item_store = ItemStore.new(File.join(Dir.pwd, "data", "items"))
 item_store.item_store.each{
   |key, value| puts(value.to_string)
+}
+
+
+recipe_store = RecipeStore.new(File.join(Dir.pwd, "data", "recipes"))
+recipe_store.recipe_store.each{
+    |key, value| puts(value.to_string)
 }
 
 char = PlayerInfo.new("test")
@@ -21,7 +28,7 @@ char.inventory.add_item(item)
 char.inventory.put_item(4, item2)
 char.inventory.put_item(11, item2)
 
-recipe = Recipe.new([Material.new(0, 11)], item2, 0)
+recipe = Recipe.new(0, [Material.new(0, 11)], item2, 0)
 puts("Can craft: #{recipe.can_craft(char.inventory)}")
 
 ##char.print

@@ -1,11 +1,12 @@
 require 'json'
 
 require './Inventory/item'
+require './Inventory/recipe'
 
-class ItemStore
-  @item_store
+class RecipeStore
+  @recipe_store
   def initialize(root_path)
-    @item_store = Hash.new
+    @recipe_store = Hash.new
     read_files(root_path)
   end
 
@@ -21,14 +22,16 @@ class ItemStore
             contents = contents + line
           end
         end
-        json_item = JSON.parse(contents)
+        json_recipe = JSON.parse(contents)
+        json_item = json_recipe['result']
         item = Item.new(json_item['id'], json_item['name'], json_item['price'], json_item['sell'], json_item['stack'])
-        @item_store[item.id] = item
+        recipe = Recipe.new(json_recipe['id'], json_recipe['materials'], item, json_recipe['difficult'])
+        @recipe_store[recipe.id] = recipe
       end
     }
   end
 
-  def item_store
-    return @item_store
+  def recipe_store
+    return @recipe_store
   end
 end
