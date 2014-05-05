@@ -1,25 +1,29 @@
 require './PlayerInformation/player_info'
 require './Inventory/item'
+require './Inventory/recipe'
+require './Inventory/material'
 
 char = PlayerInfo.new("test")
 char.gold = 100
 
 #define two items
-item = Item.new("Potion", 100, 50, 1)
-item2 = Item.new("Potion", 100, 50, 10)
+item = Item.new(0, "Potion", 100, 50, 1)
+item2 = Item.new(0, "Potion", 100, 50, 10)
 #add the items to the inventory, and test an invalid slot id
 char.inventory.add_item(item)
 char.inventory.put_item(4, item2)
 char.inventory.put_item(11, item2)
 
+recipe = Recipe.new([Material.new(0, 11)], item2, 0)
+puts("Can craft: #{recipe.can_craft(char.inventory)}")
 
-char.print
+##char.print
 
 #consume one from each item, erasing one from the inventory
-char.inventory.consume(0)
-char.inventory.consume(4)
+#char.inventory.consume(0)
+#char.inventory.consume(4)
 
-char.print
+#char.print
 
 #infinite loop
 input = ''

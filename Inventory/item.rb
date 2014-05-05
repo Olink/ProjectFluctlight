@@ -1,10 +1,12 @@
 class Item
+  @id = 0
   @name = ''
   @price = 0
   @sell = 0
   @stack = 0
 
-  def initialize(name, price, sell, stack)
+  def initialize(id, name, price, sell, stack)
+    @id = id
     @name = name
     @price = price
     @sell = sell
@@ -20,6 +22,10 @@ class Item
   end
 
   #accessors
+  def id
+    return @id
+  end
+
   def stack
     return @stack
   end

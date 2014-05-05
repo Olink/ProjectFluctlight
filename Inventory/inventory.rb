@@ -49,4 +49,8 @@ class Inventory
             end
     }
   end
+
+  def self.max_slots
+    return @@max_size
+  end
 end
