@@ -1,19 +1,25 @@
 require './PlayerInformation/player_stats'
+require './Inventory/inventory'
 
 class PlayerInfo
-  @@initialGold = 0
+  @@initial_gold = 0
 
   @name = ""
+
   attr_accessor :stats
   attr_accessor :gold
+  attr_accessor :inventory
 
   def initialize(name)
     @name = name
-    @gold = @@initialGold
+    @gold = @@initial_gold
     @stats = PlayerStats.new
+    @inventory = Inventory.new
   end
 
   def print
-    puts("User #{@name}\n\tGold: #{@gold}, HP:#{@stats.health}/#{@stats.maxHealth}")
+    puts("User #{@name} Gold: #{@gold}")
+    @stats.print
+    @inventory.print
   end
 end
