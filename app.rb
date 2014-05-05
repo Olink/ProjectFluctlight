@@ -2,6 +2,13 @@ require './PlayerInformation/player_info'
 require './Inventory/item'
 require './Inventory/recipe'
 require './Inventory/material'
+require './Inventory/item_store'
+
+
+item_store = ItemStore.new(Dir.pwd)
+item_store.item_store.each{
+  |key, value| puts(value.to_string)
+}
 
 char = PlayerInfo.new("test")
 char.gold = 100
