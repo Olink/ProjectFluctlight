@@ -1,0 +1,11 @@
+{
+  "name": "Crafting",
+  "exp_needed": [
+    10,
+    100,
+    1000
+  ],
+  "prerequisite": {
+  },
+  "hidden": false
+}

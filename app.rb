@@ -5,7 +5,7 @@ require './Inventory/recipe'
 require './Inventory/material'
 require './Inventory/item_store'
 require './Inventory/recipe_store'
-
+require './Skills/skill_store'
 
 item_store = ItemStore.new(File.join(Dir.pwd, "data", "items"))
 item_store.item_store.each{
@@ -17,6 +17,12 @@ recipe_store = RecipeStore.new(File.join(Dir.pwd, "data", "recipes"))
 recipe_store.recipe_store.each{
     |key, value| puts(value.to_string)
 }
+
+skill_store = SkillStore.new(File.join(Dir.pwd, "data", "skills"))
+skill_store.skill_list.each {
+    |key, value| puts(value.to_string)
+}
+
 
 char = PlayerInfo.new("test")
 char.gold = 100
