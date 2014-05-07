@@ -5,11 +5,15 @@
         "amount": 1
     },
     "difficulty": 2,
-    "result": {
-        "id": 1,
-        "name": "herb",
-        "price": 100,
-        "sell": 50,
+    "result": [
+      {
+        "item": {
+          "id": 1,
+          "name": "herb",
+          "price": 100,
+          "sell": 50
+        },
         "stack": 1
-    }
+      }
+    ]
 }

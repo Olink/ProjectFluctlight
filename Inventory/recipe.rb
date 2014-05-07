@@ -1,7 +1,7 @@
 class Recipe
   @id
   @materials
-  @result
+  @result = Array.new
   @difficulty
 
   def initialize(id, mats, res, dif)
@@ -20,7 +20,7 @@ class Recipe
   end
 
   def result
-    return @materials
+    return result
   end
 
   def difficulty
@@ -32,10 +32,10 @@ class Recipe
       |x|
       count = x.amount
       for i in 0..Inventory.max_slots
-        item = inventory.get_item(i)
-        if(item != nil)
-          if(item.id == x.type)
-            count = count - item.stack
+        item_wrapper = inventory.get_item(i)
+        if(item_wrapper != nil)
+          if(item_wrapper.item.id == x.type)
+            count = count - item_wrapper.stack
             if(count <= 0)
               break
             end
@@ -52,6 +52,10 @@ class Recipe
   end
 
   def to_string
-    return "Recipe id: #{@id} creates #{@result.to_string}"
+    output = "Recipe id: #{@id} creates"
+    @result.each {
+      |x| output = output + " #{x.to_string}"
+    }
+    return output
   end
 end

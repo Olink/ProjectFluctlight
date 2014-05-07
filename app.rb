@@ -1,5 +1,6 @@
 require './PlayerInformation/player_info'
 require './Inventory/item'
+require './Inventory/item_wrapper'
 require './Inventory/recipe'
 require './Inventory/material'
 require './Inventory/item_store'
@@ -21,14 +22,14 @@ char = PlayerInfo.new("test")
 char.gold = 100
 
 #define two items
-item = Item.new(0, "Potion", 100, 50, 1)
-item2 = Item.new(0, "Potion", 100, 50, 10)
+item = ItemWrapper.new(Item.new(0, "Potion", 100, 50), 1)
+item2 = ItemWrapper.new(Item.new(0, "Potion", 100, 50), 10)
 #add the items to the inventory, and test an invalid slot id
 char.inventory.add_item(item)
 char.inventory.put_item(4, item2)
 char.inventory.put_item(11, item2)
 
-recipe = Recipe.new(0, [Material.new(0, 11)], item2, 0)
+recipe = Recipe.new(0, [Material.new(0, 11)], [item2], 0)
 puts("Can craft: #{recipe.can_craft(char.inventory)}")
 
 ##char.print
@@ -40,8 +41,8 @@ puts("Can craft: #{recipe.can_craft(char.inventory)}")
 #char.print
 
 #infinite loop
-input = ''
-begin
-  input = gets.chomp
-  puts input
-end while (input != 'exit')
+#input = ''
+#begin
+#  input = gets.chomp
+#  puts input
+#end while (input != 'exit')

@@ -42,7 +42,7 @@ class Inventory
   def print
     puts("Inventory:")
     @inventory.each_with_index {
-        |x, id| if(x.kind_of?(Item) and x != nil)
+        |x, id| if(x.kind_of?(ItemWrapper) and x != nil)
               puts("\t#{id + 1}: #{x.to_string}")
             elsif
               puts("\t#{id + 1}: Empty")

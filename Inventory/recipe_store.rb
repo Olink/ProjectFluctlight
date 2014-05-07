@@ -1,6 +1,7 @@
 require 'json'
 
 require './Inventory/item'
+require './Inventory/item_wrapper'
 require './Inventory/recipe'
 
 class RecipeStore
@@ -23,9 +24,18 @@ class RecipeStore
           end
         end
         json_recipe = JSON.parse(contents)
-        json_item = json_recipe['result']
-        item = Item.new(json_item['id'], json_item['name'], json_item['price'], json_item['sell'], json_item['stack'])
-        recipe = Recipe.new(json_recipe['id'], json_recipe['materials'], item, json_recipe['difficult'])
+        json_item_arr = json_recipe['result']
+        results = Array.new
+
+        json_item_arr.each {
+          |x|
+          json_item = x['item']
+          item = Item.new(json_item['id'], json_item['name'], json_item['price'], json_item['sell'])
+          item_wrapper = ItemWrapper.new(item, x['stack'])
+          results.push(item_wrapper)
+        }
+
+        recipe = Recipe.new(json_recipe['id'], json_recipe['materials'], results, json_recipe['difficult'])
         @recipe_store[recipe.id] = recipe
       end
     }

@@ -2,6 +2,5 @@
 "id":0,
 "name":"Potion",
 "price":100,
-"sell":50,
-"stack":1
+"sell":50
 }

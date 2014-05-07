@@ -22,7 +22,7 @@ class ItemStore
           end
         end
         json_item = JSON.parse(contents)
-        item = Item.new(json_item['id'], json_item['name'], json_item['price'], json_item['sell'], json_item['stack'])
+        item = Item.new(json_item['id'], json_item['name'], json_item['price'], json_item['sell'])
         @item_store[item.id] = item
       end
     }
