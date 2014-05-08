@@ -27,6 +27,7 @@ class SkillStore
     }
   end
 
+  #TODO: make this static/global so skill set can access it freely
   def skill_list
     @skill_list
   end

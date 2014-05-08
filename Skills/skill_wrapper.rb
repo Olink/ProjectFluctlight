@@ -13,7 +13,7 @@ class SkillWrapper
 
   def add_exp(amount)
     @progress = @progress + amount
-    skill = Skill.new("test", [10, 100, 1000], {}, false)
+    skill = Skill.new("test", [10, 100, 1000], {}, false) #TODO: Get this from SkillStore instead of this bs
     should_level = true
     did_level = false
     while(should_level)

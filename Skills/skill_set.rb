@@ -8,7 +8,7 @@ class SkillSet
   end
 
   def check_unlocks()
-    skill_store = []
+    skill_store = [] #TODO: Get list of skills from skill store somehow (global/static variable method thing)
     skill_store.each {
       |key, value|
       if(!value.hidden)
