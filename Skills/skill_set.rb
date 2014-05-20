@@ -1,4 +1,5 @@
 require './Skills/skill_wrapper'
+require './Skills/skill_store'
 
 class SkillSet
   @skills = Hash.new
@@ -8,7 +9,7 @@ class SkillSet
   end
 
   def check_unlocks()
-    skill_store = [] #TODO: Get list of skills from skill store somehow (global/static variable method thing)
+    skill_store = SkillStore.skill_list
     skill_store.each {
       |key, value|
       if(!value.hidden)

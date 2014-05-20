@@ -1,4 +1,5 @@
 require './Skills/skill'
+require './Skills/skill_store'
 
 class SkillWrapper
   @name = ''
@@ -13,7 +14,11 @@ class SkillWrapper
 
   def add_exp(amount)
     @progress = @progress + amount
-    skill = Skill.new("test", [10, 100, 1000], {}, false) #TODO: Get this from SkillStore instead of this bs
+    skill = SkillStore.get_skill(@name)
+    if(skill == nil)
+      return
+    end
+
     should_level = true
     did_level = false
     while(should_level)

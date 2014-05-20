@@ -19,7 +19,7 @@ recipe_store.recipe_store.each{
 }
 
 skill_store = SkillStore.new(File.join(Dir.pwd, "data", "skills"))
-skill_store.skill_list.each {
+SkillStore.skill_list.each {
     |key, value| puts(value.to_string)
 }
 

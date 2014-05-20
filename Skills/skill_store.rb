@@ -1,10 +1,10 @@
 require './Skills/skill'
 
 class SkillStore
-  @skill_list
+  @@skill_list
 
   def initialize(root_path)
-    @skill_list = Hash.new
+    @@skill_list = Hash.new
     read_files(root_path)
   end
 
@@ -22,13 +22,16 @@ class SkillStore
         end
         json_item = JSON.parse(contents)
         skill = Skill.new(json_item['name'], json_item['exp_needed'], json_item['prerequisite'], json_item['hidden'])
-        @skill_list[skill.name] = skill
+        @@skill_list[skill.name] = skill
       end
     }
   end
 
-  #TODO: make this static/global so skill set can access it freely
-  def skill_list
-    @skill_list
+  def self.skill_list
+    @@skill_list
+  end
+
+  def self.get_skill(name)
+    @@skill_list[name]
   end
 end
