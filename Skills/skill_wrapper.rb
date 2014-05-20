@@ -46,4 +46,11 @@ class SkillWrapper
   def progress
     @progress
   end
+
+  def print
+    proto = SkillStore.get_skill(@name)
+    if(proto != nil)
+      puts("\t#{@name}: Level: #{@level} Exp: #{@progress} / #{proto.get_exp_needed(@level)}")
+    end
+  end
 end

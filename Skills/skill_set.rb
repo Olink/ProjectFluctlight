@@ -2,10 +2,10 @@ require './Skills/skill_wrapper'
 require './Skills/skill_store'
 
 class SkillSet
-  @skills = Hash.new
+  @skills
 
-  def initialize(skills)
-    @skills = skills
+  def initialize
+    @skills = Hash.new
   end
 
   def check_unlocks()
@@ -36,5 +36,13 @@ class SkillSet
 
   def skills
     @skills
+  end
+
+  def print
+    puts('Skills:')
+    @skills.each {
+      |key, value|
+        value.print
+    }
   end
 end

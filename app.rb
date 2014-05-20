@@ -12,7 +12,6 @@ item_store.item_store.each{
   |key, value| puts(value.to_string)
 }
 
-
 recipe_store = RecipeStore.new(File.join(Dir.pwd, "data", "recipes"))
 recipe_store.recipe_store.each{
     |key, value| puts(value.to_string)
@@ -22,7 +21,6 @@ skill_store = SkillStore.new(File.join(Dir.pwd, "data", "skills"))
 SkillStore.skill_list.each {
     |key, value| puts(value.to_string)
 }
-
 
 char = PlayerInfo.new("test")
 char.gold = 100
@@ -38,7 +36,7 @@ char.inventory.put_item(11, item2)
 recipe = Recipe.new(0, [Material.new(0, 11)], [item2], 0)
 puts("Can craft: #{recipe.can_craft(char.inventory)}")
 
-##char.print
+char.print
 
 #consume one from each item, erasing one from the inventory
 #char.inventory.consume(0)

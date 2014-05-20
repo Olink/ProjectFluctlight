@@ -30,4 +30,12 @@ class Skill
   def to_string
     "#{@name} - Hidden: #{@hidden}"
   end
+
+  def get_exp_needed(level)
+    if(exp_needed[level] == nil)
+      exp_needed[-1]
+    else
+      exp_needed[level]
+    end
+  end
 end
