@@ -8,6 +8,8 @@ require './Inventory/item_store'
 require './Inventory/recipe_store'
 require './Skills/skill_store'
 
+require 'sequel'
+
 item_store = ItemStore.new(File.join(Dir.pwd, "data", "items"))
 item_store.print()
 
@@ -53,3 +55,10 @@ char.print
 #  input = gets.chomp
 #  puts input
 #end while (input != 'exit')
+
+DB = Sequel.connect('sqlite://database.db')
+require_relative 'models/init'
+
+DB[:users].each {
+    |x| puts("Users in db:\n\t" + x[:username])
+}

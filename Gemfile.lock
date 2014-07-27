@@ -1,0 +1,86 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    awesome_print (1.2.0)
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
+    coderay (1.1.0)
+    daemons (1.1.9)
+    eventmachine (1.0.3)
+    ffi (1.9.3)
+    hashie (3.2.0)
+    listen (2.7.9)
+      celluloid (>= 0.15.2)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+    method_source (0.8.2)
+    multi_json (1.10.1)
+    mysqlplus (0.1.2)
+    oa-core (0.3.2)
+    oa-openid (0.3.2)
+      oa-core (= 0.3.2)
+      rack-openid (~> 1.3.1)
+      ruby-openid-apps-discovery (~> 1.2.0)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
+    omniauth-openid (1.0.1)
+      omniauth (~> 1.0)
+      rack-openid (~> 1.3.1)
+    omniauth-steam (1.0.3)
+      multi_json
+      omniauth-openid
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rack (1.5.2)
+    rack-openid (1.3.1)
+      rack (>= 1.1.0)
+      ruby-openid (>= 2.1.8)
+    rack-protection (1.5.3)
+      rack
+    rb-fsevent (0.9.4)
+    rb-inotify (0.9.5)
+      ffi (>= 0.5.0)
+    rerun (0.10.0)
+      listen (~> 2.7, >= 2.7.3)
+    ruby-openid (2.5.0)
+    ruby-openid-apps-discovery (1.2.0)
+      ruby-openid (>= 2.1.7)
+    sequel (4.12.0)
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    sinatra-partial (0.4.0)
+      sinatra
+    sinatra-session (1.0.0)
+      sinatra (>= 1.0)
+    slop (3.6.0)
+    sqlite3 (1.3.9)
+    thin (1.6.2)
+      daemons (>= 1.0.9)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
+    tilt (1.4.1)
+    timers (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
+  mysqlplus
+  oa-openid
+  omniauth
+  omniauth-openid
+  omniauth-steam
+  pry
+  rerun
+  sequel
+  sinatra
+  sinatra-partial
+  sinatra-session
+  sqlite3
+  thin
