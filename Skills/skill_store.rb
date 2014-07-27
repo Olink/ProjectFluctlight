@@ -27,11 +27,43 @@ class SkillStore
     }
   end
 
-  def self.skill_list
-    @@skill_list
+  def self.get_skill(name)
+    if(@@skill_list.has_key?(name))
+      skill = @@skill_list[name]
+      return Skill.new(skill.name, skill.exp_needed, skill.prerequisite, skill.hidden)
+    end
+
+    return nil
   end
 
-  def self.get_skill(name)
-    @@skill_list[name]
+  def self.check_unlocks(skillset)
+    @@skill_list.each{
+      |key, value|
+        if(!value.hidden)
+          should_unlock = true
+          value.prerequisite.each {
+              |key2, value2|
+            if(@skills[key2] != nil)
+              if(@skills[key2].level < value2)
+                should_unlock = false
+                break
+              end
+            else
+              should_unlock = false
+              break
+            end
+          }
+
+          if(should_unlock)
+            skillset.skills[key] = SkillWrapper.new(key, 0, 0)
+          end
+        end
+    }
+  end
+
+  def print()
+    @@skill_list.each{
+        |key, value| puts(value.to_string)
+    }
   end
 end

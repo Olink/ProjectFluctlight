@@ -18,7 +18,7 @@ class PlayerInfo
     @stats = PlayerStats.new
     @inventory = Inventory.new
     @skill_set = SkillSet.new
-    @skill_set.check_unlocks
+    SkillStore.check_unlocks(@skill_set)
   end
 
   def print

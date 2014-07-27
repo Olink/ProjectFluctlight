@@ -19,9 +19,7 @@ recipe_store.recipe_store.each{
 }
 
 skill_store = SkillStore.new(File.join(Dir.pwd, "data", "skills"))
-SkillStore.skill_list.each {
-    |key, value| puts(value.to_string)
-}
+skill_store.print()
 
 char = PlayerInfo.new("test")
 char.gold = 100
