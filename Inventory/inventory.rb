@@ -16,7 +16,7 @@ class Inventory
   end
 
   def put_item(slot, item)
-    if(slot < @@max_size)
+    if(slot < @@max_size && item != nil)
       @inventory[slot] = item
     end
   end
@@ -31,12 +31,14 @@ class Inventory
   end
 
   def add_item(item)
-    @inventory.each_with_index{
-        |x, id| if(x == nil)
-                  @inventory[id] = item
-                  return
-                end
-    }
+    if(item != nil)
+      @inventory.each_with_index{
+          |x, id| if(x == nil)
+                    @inventory[id] = item
+                    return
+                  end
+      }
+    end
   end
 
   def print

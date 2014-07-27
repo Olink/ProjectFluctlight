@@ -12,7 +12,7 @@ class Item
   end
 
   def to_string
-    return "#{@name} costs #{@price} and sells for #{@sell}."
+    return "#{@name}(#{id}) costs #{@price} and sells for #{@sell}."
   end
 
   #accessors

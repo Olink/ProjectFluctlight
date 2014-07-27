@@ -8,9 +8,7 @@ require './Inventory/recipe_store'
 require './Skills/skill_store'
 
 item_store = ItemStore.new(File.join(Dir.pwd, "data", "items"))
-item_store.item_store.each{
-  |key, value| puts(value.to_string)
-}
+item_store.print()
 
 recipe_store = RecipeStore.new(File.join(Dir.pwd, "data", "recipes"))
 recipe_store.recipe_store.each{
@@ -25,9 +23,9 @@ SkillStore.skill_list.each {
 char = PlayerInfo.new("test")
 char.gold = 100
 
-#define two items
-item = ItemWrapper.new(Item.new(0, "Potion", 100, 50), 1)
-item2 = ItemWrapper.new(Item.new(0, "Potion", 100, 50), 10)
+#fetch an item from the item storage....item store is probably a bad name in hindsight
+item = item_store.get_item(0, 1)
+item2 = item_store.get_item(0, 10)
 #add the items to the inventory, and test an invalid slot id
 char.inventory.add_item(item)
 char.inventory.put_item(4, item2)

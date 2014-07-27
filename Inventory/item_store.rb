@@ -1,6 +1,7 @@
 require 'json'
 
 require './Inventory/item'
+require './Inventory/item_wrapper'
 
 class ItemStore
   @item_store
@@ -28,7 +29,16 @@ class ItemStore
     }
   end
 
-  def item_store
-    return @item_store
+  def get_item(id, count)
+    if(@item_store.has_key?(id))
+      return ItemWrapper.new(@item_store[id], count)
+    end
+    return nil
+  end
+
+  def print
+    @item_store.each{
+        |key, value| puts(value.to_string)
+    }
   end
 end
