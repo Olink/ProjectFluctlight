@@ -30,6 +30,28 @@ class Inventory
     end
   end
 
+  def consume_from_slot(slot, amount)
+    for i in 0..(amount - 1)
+      consume(slot)
+    end
+  end
+
+  def consume_item_amount(itemid, amount)
+    amount_left_to_consume = amount
+    @inventory.each_with_index {
+      |x, id| if (x != nil)
+                if (@inventory[id].item.id == itemid)
+                  amount_we_can_take = [amount_left_to_consume, @inventory[id].stack].min
+                  consume_from_slot(id, amount_we_can_take)
+                  amount_left_to_consume = amount_left_to_consume - amount_we_can_take
+                  if(amount_we_can_take >= amount)
+                    break;
+                  end
+                end
+              end
+    }
+  end
+
   def add_item(item)
     if(item != nil)
       @inventory.each_with_index{
@@ -37,6 +59,37 @@ class Inventory
                     @inventory[id] = item
                     return
                   end
+      }
+    end
+  end
+
+  def can_craft(recipe)
+    recipe.materials.each {
+        |x|
+      count = x.amount
+      @inventory.each { |item_wrapper|
+        if (item_wrapper != nil)
+          if (item_wrapper.item.id == x.type)
+            count = count - item_wrapper.stack
+            if (count <= 0)
+              break
+            end
+          end
+        end
+      }
+
+      if(count > 0)
+        return false
+      end
+    }
+
+    return true
+  end
+
+  def craft(recipe)
+    if(can_craft(recipe))
+      recipe.materials.each {
+        |mat| consume_item_amount(mat.type, mat.amount)
       }
     end
   end

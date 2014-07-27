@@ -1,4 +1,5 @@
 require './PlayerInformation/player_info'
+require './Inventory/inventory'
 require './Inventory/item'
 require './Inventory/item_wrapper'
 require './Inventory/recipe'
@@ -24,18 +25,22 @@ char = PlayerInfo.new("test")
 char.gold = 100
 
 #fetch an item from the item storage....item store is probably a bad name in hindsight
-item = item_store.get_item(0, 1)
-item2 = item_store.get_item(0, 10)
+item = item_store.get_item(0, 7)
+item2 = item_store.get_item(0, 9)
+item3 = item_store.get_item(0, 1)
 #add the items to the inventory, and test an invalid slot id
 char.inventory.add_item(item)
-char.inventory.put_item(4, item2)
-char.inventory.put_item(11, item2)
+char.inventory.add_item(item2)
+char.inventory.add_item(item3)
 
 recipe = Recipe.new(0, [Material.new(0, 11)], [item2], 0)
-puts("Can craft: #{recipe.can_craft(char.inventory)}")
+puts("Can craft: #{char.inventory.can_craft(recipe)}")
 
 char.print
 
+char.inventory.craft(recipe)
+
+char.print
 #consume one from each item, erasing one from the inventory
 #char.inventory.consume(0)
 #char.inventory.consume(4)
